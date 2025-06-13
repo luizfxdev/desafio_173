@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #27272c;
+  color: #fff;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(39, 40, 34, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #ff0044;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h2 {
+  color: #ff0044;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #444;
+  background: #272822;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #ff0044;
+  box-shadow: 0 0 10px rgba(255, 0, 68, 0.5);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Alterado de space-between para center */
+  gap: 60px; /* Reduzi o gap de 20px para 10px */
+  margin-bottom: 30px;
+}
+
+button {
+  position: relative;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  transition: 0.2s;
+  flex: 0 0 auto; /* Alterado para não crescer/encolher */
+  cursor: pointer;
+  border-radius: 8px;
+  min-width: 140px;
+  max-width: 180px;
+  margin: 0 5px; /* Adicionado pequena margem horizontal */
+}
+
+button:hover {
+  letter-spacing: 0.2rem;
+  padding: 1.1rem 1.6rem;
+  background: var(--clr);
+  color: var(--clr);
+  animation: box 3s infinite;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #272822;
+  border-radius: 6px;
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+}
+
+button i {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 6px;
+}
+
+button i::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 80%;
+  top: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+
+button:hover i::before {
+  width: 15px;
+  left: 20%;
+  animation: move 3s infinite;
+}
+
+button i::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 20%;
+  bottom: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+
+button:hover i::after {
+  width: 15px;
+  left: 80%;
+  animation: move 3s infinite;
+}
+
+.result-container {
+  background: rgba(39, 40, 34, 0.7);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-output {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ff0044;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  min-height: 60px;
+  word-break: break-all;
+}
+
+.calculation-steps {
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes box {
+  0% {
+    box-shadow: #27272c;
+  }
+  50% {
+    box-shadow: 0 0 25px var(--clr);
+  }
+  100% {
+    box-shadow: #27272c;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .result-output {
+    font-size: 1.2rem;
+  }
+}

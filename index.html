@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labirinto Musical Decifrador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="background-canvas"></canvas>
+
+    <div class="container">
+      <h1>Decifrador Musical</h1>
+      <p class="description">Decifre a melodia mágica codificada em uma série de notas misteriosas!</p>
+
+      <div class="input-group">
+        <label for="notes-input">Insira as notas musicais (ex: 1, 2, 3, 1, 2, 3, 1):</label>
+        <input type="text" id="notes-input" placeholder="Ex: 1, 2, 3, 1, 2, 3, 1" />
+      </div>
+
+      <div class="button-group">
+        <button id="decipher-btn" style="--clr: #00ccff">
+          <span>DECIFRAR</span>
+          <i></i>
+        </button>
+        <button id="reset-btn" style="--clr: #ff0044">
+          <span>RETORNAR</span>
+          <i></i>
+        </button>
+      </div>
+
+      <div class="result-container">
+        <h2>Resultado:</h2>
+        <div id="result-output" class="result-output"></div>
+        <div id="calculation-steps" class="calculation-steps"></div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="simplex-noise.js"></script>
+    <script src="background-animation.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
